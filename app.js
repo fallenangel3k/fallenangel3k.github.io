@@ -4,27 +4,27 @@
 
 var config = {
   // - Your app's id on moneypot.com
-  app_id: 18,                             // <----------------------------- EDIT ME!
+  app_id: 1471,                           
   // - Displayed in the navbar
-  app_name: 'Untitled Dice',
+  app_name: 'Angels Money Pot',
   // - For your faucet to work, you must register your site at Recaptcha
   // - https://www.google.com/recaptcha/intro/index.html
-  recaptcha_sitekey: '6LfI_QUTAAAAACrjjuzmLw0Cjx9uABxb8uguLbph',  // <----- EDIT ME!
+  recaptcha_sitekey: '6LevqigTAAAAAPSTvIbdlxhf1wDud851uD4dziFQ', 
   redirect_uri: 'https://untitled-dice.github.io',
   mp_browser_uri: 'https://www.moneypot.com',
   mp_api_uri: 'https://api.moneypot.com',
   chat_uri: '//socket.moneypot.com',
   // - Show debug output only if running on localhost
-  debug: isRunningLocally(),
+  // debug: isRunningLocally(),
   // - Set this to true if you want users that come to http:// to be redirected
   //   to https://
-  force_https_redirect: !isRunningLocally(),
+  force_https_redirect: true,
   // - Configure the house edge (default is 1%)
   //   Must be between 0.0 (0%) and 1.0 (100%)
   house_edge: 0.01,
-  chat_buffer_size: 250,
+  chat_buffer_size: 99,
   // - The amount of bets to show on screen in each tab
-  bet_buffer_size: 25
+  bet_buffer_size: 50
 };
 
 ////////////////////////////////////////////////////////////
