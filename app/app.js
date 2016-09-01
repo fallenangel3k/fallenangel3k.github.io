@@ -768,7 +768,7 @@ var UserBox = React.createClass({
           {
             type: 'button',
             onClick: this._onLogout,
-            className: 'btn navbar-btn btn-xs'
+            className: 'btn navbar-btn btn-xs btn-warning'
           },
           'Logout'
         )
@@ -782,7 +782,7 @@ var UserBox = React.createClass({
             href: config.mp_browser_uri + '/oauth/authorize' +
               '?app_id=' + config.app_id +
               '&redirect_uri=' + config.redirect_uri,
-            className: 'btn navbar-btn btn-xs btn-success'
+            className: 'btn navbar-btn btn-xs btn-warning'
           },
           'Login with Moneypot'
         )
