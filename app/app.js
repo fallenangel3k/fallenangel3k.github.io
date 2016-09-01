@@ -1,4 +1,4 @@
-// Untitled Dice v0.0.8
+// AngelsDice v0.0.1
 
 // Customize these configuration settings:
 
@@ -6,23 +6,24 @@ var config = {
   // - Your app's id on moneypot.com
   app_id: 1471,                           
   // - Displayed in the navbar
-  app_name: 'Angels Money Pot',
+  app_name: 'Angels Money Heaven',
+  
   // - For your faucet to work, you must register your site at Recaptcha
   // - https://www.google.com/recaptcha/intro/index.html
-  recaptcha_sitekey: '6LevqigTAAAAAPSTvIbdlxhf1wDud851uD4dziFQ', 
+  recaptcha_sitekey: '6LevqigTAAAAAPSTvIbdlxhf1wDud851uD4dziFQ',
+  
   redirect_uri: 'https://fallenangel3k.github.io',
   mp_browser_uri: 'https://www.moneypot.com',
   mp_api_uri: 'https://api.moneypot.com',
   chat_uri: '//socket.moneypot.com',
-  // - Show debug output only if running on localhost
-  // debug: isRunningLocally(),
-  // - Set this to true if you want users that come to http:// to be redirected
-  //   to https://
   force_https_redirect: true,
+  
   // - Configure the house edge (default is 1%)
   //   Must be between 0.0 (0%) and 1.0 (100%)
   house_edge: 0.009,
+  
   chat_buffer_size: 99,
+  
   // - The amount of bets to show on screen in each tab
   bet_buffer_size: 50
 };
