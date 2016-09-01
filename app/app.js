@@ -782,7 +782,7 @@ var UserBox = React.createClass({
             href: config.mp_browser_uri + '/oauth/authorize' +
               '?app_id=' + config.app_id +
               '&redirect_uri=' + config.redirect_uri,
-            className: 'btn btn-default'
+            className: 'btn btn-xs'
           },
           'Login with Moneypot'
         )
