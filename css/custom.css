@@ -29,7 +29,7 @@ body {
     width: 100%;
     float: left;
     left: 0;
-    color: white;
+    color: green;
 }
 
 .panel {
@@ -38,7 +38,7 @@ body {
   -webkit-box-shadow: 0px 0px 3px 2px rgb(19, 44, 54);
   -moz-box-shadow: 0px 0px 3px 2px rgb(19, 44, 54);
   box-shadow: 0px 0px 3px 2px rgb(19, 44, 54);
-  color: #00ff00;
+  color: white;
 }
 
 .link_list ul {
