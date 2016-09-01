@@ -759,7 +759,7 @@ var UserBox = React.createClass({
 	    // User API token...
         el.span(
           {className: 'navbar-text'},
-          'You secret API Key: ',
+          'Your SECRET API Key: ',
           el.code(null, worldStore.state.accessToken)
         ),	
 		
