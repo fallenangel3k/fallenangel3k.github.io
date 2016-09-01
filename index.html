@@ -1,13 +1,61 @@
 <!doctype html>
 <head>
-  <title>Angel's Money Pot</title>
+  <title>Angel's Money Heaven</title>
   <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="node_modules/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
-  <link href="style.css" rel="stylesheet">
-  <link href="custom.css" rel="stylesheet"> <!-- Recommendation: Put your CSS customizations in custom.css -->
+  <script type="text/javascript">
+		  function onLoad()
+        {
+            var anchorValue;
+            var url = document.location;
+            var strippedUrl = url.toString().split("#");
+            if (strippedUrl.length > 1) {
+                anchorValue = strippedUrl[1];         
+                anchorValue = anchorValue.replace("access_token=", "access token: ")
+                anchorValue = anchorValue.split("&")[0];
+                document.getElementById("lblToken").textContent = anchorValue;
+            }
+        }
+  </script>
+
+  
+  <link href="/css/style.css" rel="stylesheet">
+  <link href="/css/custom.css" rel="stylesheet"> <!-- Recommendation: Put your CSS customizations in custom.css -->
 </head>
 <body>
+
   <div id="app"></div>
+  
+      <div id="main" class="main">
+        <div id="navDiv">
+            <a href="/" style="float:left;"> <img src="/Images/logo3.png" style="position:relative; left:-5px;" alt="DiceBot Logo Image"/></a>
+		    
+        <a href="#Menu1_SkipLink" style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;">Skip Navigation Links</a><div id="Menu1">
+	<ul class="level1">
+		<li><a class="popout level1 Txt_Dice" href="../botpage.aspx"><div class='Txt_Settings'>DiceBot</div><div id='Line2'></div></a><ul class="level2">
+			<li><a class="level2 Txt_Contact" href="../GettingStarted.aspx">Getting Started</a></li><li><a class="level2 Txt_Contact" href="../Downloads.aspx">Downloads</a></li><li><a class="level2 Txt_Contact" href="../Details.aspx">Bot Details</a></li><li><a class="level2 Txt_Contact" href="../ProgrammerMode.aspx">Programmer Mode</a></li><li><a class="level2 Txt_Contact" href="http://github.com/seuntjie900/DiceBot">Source Code</a></li>
+		</ul></li><li><a class="level1 Txt_Dice" href="../settings.aspx"><div class='Txt_Settings'>Settings</div><div id='Line2'></div></a></li><li><a class="level1 Txt_Dice" href="../Scripts.aspx"><div class='Txt_Settings'>Scripts</div><div id='Line2'></div></a></li><li><a class="popout level1 Txt_Dice" href="../BettingSystem.aspx"><div class='Txt_Settings'>Bet Systems</div><div id='Line2'></div></a><ul class="level2">
+			<li><a class="level2 Txt_Contact" href="../BettingSystem.aspx?id=3">d'Alembert</a></li><li><a class="level2 Txt_Contact" href="../BettingSystem.aspx?id=4">Fibonacci</a></li><li><a class="level2 Txt_Contact" href="../BettingSystem.aspx?id=2">Labouchere</a></li><li><a class="level2 Txt_Contact" href="../BettingSystem.aspx?id=1">Martingale</a></li><li><a class="level2 Txt_Contact" href="../BettingSystem.aspx?id=5">Preset List</a></li>
+		</ul></li><li><a class="level1 Txt_Dice" href="../seuntjiebot.aspx"><div class='Txt_Settings'>SeuntjieBot</div><div id='Line2'></div></a></li><li><a class="popout level1 Txt_Dice" href="../Reviews.aspx"><div class='Txt_Settings'>Reviews</div><div id='Line2'></div></a><ul class="level2">
+			<li><a class="level2 Txt_Contact" href="../reviews.aspx?id=2">BetKing</a></li><li><a class="level2 Txt_Contact" href="../reviews.aspx?id=14">crypto-games</a></li><li><a class="level2 Txt_Contact" href="../reviews.aspx?id=1">Just-dice</a></li><li><a class="level2 Txt_Contact" href="../reviews.aspx?id=3">Prime Dice</a></li><li><a class="level2 Txt_Contact" href="../reviews.aspx?id=6">SafeDice</a></li>
+		</ul></li><li><a class="popout level1 Txt_Dice" href="../FAQs.aspx"><div class='Txt_Settings'>FAQ</div><div id='Line2'></div></a><ul class="level2">
+			<li><a class="level2 Txt_Contact" href="../FAQs.aspx?topic=1">DiceBot</a></li><li><a class="level2 Txt_Contact" href="../FAQs.aspx?topic=2">SeuntjieBot</a></li>
+		</ul></li><li><a class="level1 Txt_Dice" href="../Contact.aspx"><div class='Txt_Settings'>Contact</div><div id='Line2'></div></a></li><li><a class="level1 Txt_Dice" href="../Donate.aspx"><div class='Txt_Settings'>Donate</div><div id='Line2'></div></a></li>
+	</ul>
+</div><a id="Menu1_SkipLink"></a>
+        </div>
+        <div class="Txt_text">
+      
+    <br />
+    <span id="ContentPlaceHolder1_lblLoginSuccess">
+    Use this API Token to log in with DiceBot: <span id="lblToken"></span></span><br />
+    <span id="ContentPlaceHolder1_lblNothing">Do NOT share this token with anyone. Anyone can log in to your account and place bets with only this token.</span>
+    <br /><br />
+    <span id="ContentPlaceHolder1_lbl1">Or, try placing a few bets here instead</span><br /><br />
+    <div id="app" style="text-align:left"></div>
+
+  
+  
   <script src="node_modules/react/dist/react.js"></script>
   <script src="node_modules/jquery/dist/jquery.min.js"></script>
   <script src="node_modules/CBuffer/cbuffer.js"></script>
@@ -17,6 +65,6 @@
   <script src="node_modules/wolfy87-eventemitter/EventEmitter.js"></script>
   <script src="node_modules/bootstrap/js/tooltip.js"></script>
   <script src="node_modules/bootstrap/js/popover.js"></script>
-  <script src="app.js" type="text/javascript"></script>
+  <script src="/app/app.js" type="text/javascript"></script>
   <script src="//www.google.com/recaptcha/api.js?render=explicit&onload=onRecaptchaLoad" async defer></script>
 </body>
