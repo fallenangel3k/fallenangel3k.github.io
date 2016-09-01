@@ -768,7 +768,7 @@ var UserBox = React.createClass({
           {
             type: 'button',
             onClick: this._onLogout,
-            className: 'navbar-btn btn btn-default'
+            className: 'navbar-btn btn btn-xs'
           },
           'Logout'
         )
@@ -790,7 +790,7 @@ var UserBox = React.createClass({
     }
 
     return el.div(
-      {className: 'navbar-right'},
+      {className: 'navbar-left'},
       innerNode
     );
   }
