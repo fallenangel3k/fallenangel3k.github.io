@@ -1491,7 +1491,7 @@ var BetBoxButton = React.createClass({
               {
                 id: 'bet-hi',
                 type: 'button',
-                className: 'btn btn-lg btn-primary btn-block',
+                className: 'btn btn-lg btn-info btn-block',
                 onClick: this._makeBetHandler('>'),
                 disabled: !!this.state.waitingForServer
               },
@@ -1505,7 +1505,7 @@ var BetBoxButton = React.createClass({
               {
                 id: 'bet-lo',
                 type: 'button',
-                className: 'btn btn-lg btn-primary btn-block',
+                className: 'btn btn-lg btn-info btn-block',
                 onClick: this._makeBetHandler('<'),
                 disabled: !!this.state.waitingForServer
               },
