@@ -701,7 +701,7 @@ var UserBox = React.createClass({
         null,
         // Deposit/Withdraw popup buttons
         el.div(
-          {className: 'btn-group navbar-center btn-group-xs'},
+          {className: 'btn-group navbar-left btn-group-xs'},
           el.button(
             {
               type: 'button',
@@ -736,7 +736,7 @@ var UserBox = React.createClass({
         // Refresh button
         el.button(
           {
-            className: 'btn btn-link navbar-btn navbar-center ' + (worldStore.state.isRefreshingUser ? ' rotate' : ''),
+            className: 'btn btn-link navbar-btn navbar-left ' + (worldStore.state.isRefreshingUser ? ' rotate' : ''),
             title: 'Refresh Balance',
             disabled: worldStore.state.isRefreshingUser,
             onClick: this._onRefreshUser,
@@ -768,7 +768,7 @@ var UserBox = React.createClass({
           {
             type: 'button',
             onClick: this._onLogout,
-            className: 'btn btn-default navbar-btn btn-xs'
+            className: 'navbar-btn btn btn-xs'
           },
           'Logout'
         )
@@ -790,7 +790,7 @@ var UserBox = React.createClass({
     }
 
     return el.div(
-      {className: 'navbar-center'},
+      {className: 'navbar-left'},
       innerNode
     );
   }
@@ -800,7 +800,7 @@ var Navbar = React.createClass({
   displayName: 'Navbar',
   render: function() {
     return el.div(
-      {className: 'navbar-center'},
+      {className: 'navbar'},
       el.div(
         {className: 'container-fluid'},
         el.div(
