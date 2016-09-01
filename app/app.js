@@ -768,7 +768,7 @@ var UserBox = React.createClass({
           {
             type: 'button',
             onClick: this._onLogout,
-            className: 'navbar-btn btn btn-xs'
+            className: 'btn btn-default navbar-btn btn-xs'
           },
           'Logout'
         )
