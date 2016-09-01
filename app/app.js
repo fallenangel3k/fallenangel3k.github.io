@@ -701,7 +701,7 @@ var UserBox = React.createClass({
         null,
         // Deposit/Withdraw popup buttons
         el.div(
-          {className: 'btn-group navbar-left btn-group-xs'},
+          {className: 'btn-group navbar-default btn-group-xs'},
           el.button(
             {
               type: 'button',
@@ -768,7 +768,7 @@ var UserBox = React.createClass({
           {
             type: 'button',
             onClick: this._onLogout,
-            className: 'navbar-btn btn btn-xs'
+            className: 'btn btn-default navbar-btn btn-xs'
           },
           'Logout'
         )
@@ -790,7 +790,7 @@ var UserBox = React.createClass({
     }
 
     return el.div(
-      {className: 'navbar-left'},
+      {className: 'navbar-default'},
       innerNode
     );
   }
@@ -800,7 +800,7 @@ var Navbar = React.createClass({
   displayName: 'Navbar',
   render: function() {
     return el.div(
-      {className: 'navbar'},
+      {className: 'navbar-default'},
       el.div(
         {className: 'container-fluid'},
         el.div(
