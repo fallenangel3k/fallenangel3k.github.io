@@ -748,12 +748,21 @@ var UserBox = React.createClass({
           },
           el.span({className: 'glyphicon glyphicon-refresh'})
         ),
+		
         // Logged in as...
         el.span(
           {className: 'navbar-text'},
           'Logged in as ',
           el.code(null, worldStore.state.user.uname)
         ),
+		
+	    // User API token...
+        el.span(
+          {className: 'navbar-text'},
+          'You secret API Key: ',
+          el.code(null, worldStore.state.accessToken)
+        ),	
+		
         // Logout button
         el.button(
           {
@@ -2123,26 +2132,6 @@ var TabContent = React.createClass({
   }
 });
 
-var APItoken = React.createClass({
-  displayName: 'APItoken',
-  render: function() {
-    return (
-      el.div(
-        {className: 'text-center'},
-        el.button(
-          {
-            type: 'button',
-            className: 'btn btn-default btn-sm',
-            onClick: this._onClick,
-            style: { marginTop: '-15px' }
-          },
-          'Your API token: ',
-            el.span({className: 'label label-success'}, worldStore.state.accessToken) 
-        )
-      )
-    );
-  }
-});
 
 var Footer = React.createClass({
   displayName: 'Footer',

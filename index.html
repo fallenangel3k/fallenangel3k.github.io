@@ -3,40 +3,12 @@
   <title>Angel's Money Heaven</title>
   <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="node_modules/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
-  <script type="text/javascript">
-		  function onLoad()
-        {
-            var anchorValue;
-            var url = document.location;
-            var strippedUrl = url.toString().split("#");
-            if (strippedUrl.length > 1) {
-                anchorValue = strippedUrl[1];         
-                anchorValue = anchorValue.replace("access_token=", "access token: ")
-                anchorValue = anchorValue.split("&")[0];
-                document.getElementById("lblToken").textContent = anchorValue;
-            }
-        }
-  </script>
-
-  
   <link href="/css/style.css" rel="stylesheet">
   <link href="/css/custom.css" rel="stylesheet"> <!-- Recommendation: Put your CSS customizations in custom.css -->
 </head>
 <body>
 
   <div id="app"></div>
-  	
-    <div class="Txt_text">
-    <br />
-    <span id="ContentPlaceHolder1_lblLoginSuccess">
-    Use this API Token to log in with DiceBot: <span id="lblToken"></span></span><br />
-    <span id="ContentPlaceHolder1_lblNothing">Do NOT share this token with anyone. Anyone can log in to your account and place bets with only this token.</span>
-    <br /><br />
-    <span id="ContentPlaceHolder1_lbl1">Or, try placing a few bets here instead</span><br /><br />
-    <div id="app" style="text-align:left"></div>
-
-  
-  
   <script src="node_modules/react/dist/react.js"></script>
   <script src="node_modules/jquery/dist/jquery.min.js"></script>
   <script src="node_modules/CBuffer/cbuffer.js"></script>
