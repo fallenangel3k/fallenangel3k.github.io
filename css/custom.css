@@ -16,11 +16,7 @@ canvas {
 
 
 body {
-  /* background-color: #f1c40f; */
-/*background-image: url("../res/back4.jpg");
-background-repeat: no-repeat;
-    background-position: left top;
-    background-attachment: fixed;*/
+	background-color: #f1c40f;
 }
 
 .navbar {
