@@ -2137,7 +2137,7 @@ var APItoken = React.createClass({
             style: { marginTop: '-15px' }
           },
           'Your API token: ',
-            el.span({className: 'label label-success'}, worldStore.state.accessToken) :
+            el.span({className: 'label label-success'}, worldStore.state.accessToken) 
         )
       )
     );
