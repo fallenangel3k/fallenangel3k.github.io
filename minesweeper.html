@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="eng">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+        <title>Bitcoin Minesweeper</title>
+        <meta name="description" content="Play Minesweeper!">
+
+
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/semantic.min.css" />
+        <link rel="stylesheet" type="text/css" href="lib/css/style.css" />
+        <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+        <link rel="icon" type="image/png" href="http://fallenangel3k.github.io/lib/css/img/favicon.png" />
+        <meta property="og:image" content="http://fallenangel3k.github.io/lib/css/img/ogim.png"/>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.6/socket.io.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/semantic.min.js"></script>
+        <script type="text/javascript" src="lib/js/jquery.cookie.js"></script>
+        <script type="text/javascript" src="lib/js/jquery.session.js"></script>
+        <script type="text/javascript" src="lib/js/strip-combining-marks.js"></script>
+        <script type="text/javascript">
+        $(function() {
+	var COOKIE_NAME = 'splash-page-cookie';
+	$go = $.cookie(COOKIE_NAME);
+	if ($go == null) {
+		$.cookie(COOKIE_NAME, 'welcome', { path: '/', expires: 4 });
+		window.location = "/welcome.html"
+	}
+	else {
+	}
+		});
+	</script>
+    </head>
+    
+    <body>
+    
+    
+        <div id="faucetClaimCaptcha"></div>
+
+        <div class="ui basic modal" id="safeLinkForm">
+            <div class="header">
+                WARNING!
+            </div>
+            <div class="image content">
+                <div class="image">
+                    <i class="warning sign icon"></i>
+                </div>
+                <div class="description">
+                    <p><span id="unknownLink"></span></p>
+                    <p>Be careful, you have clicked on a link that will redirect you to an external source.</p>
+                    <p>For your safety, we must advise you that <span style="color: #F1C40F;">any unknown link may put your account or wallet security at risk</span>.</p>
+                    <p>Are you sure you want to continue?</p>
+                    <p><a class="ui red basic inverted button safeLinkDoRedirectButton" target="_blank">I understand the risks, let me go</a><a class="ui green basic inverted button" id="safeLinkCancelRedirectButton">Cancel</a></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="ui basic modal" id="depositForm">
+            <i class="close icon"></i>
+            <div class="header">
+                Deposit Form
+            </div>
+            <div class="image content">
+                <div class="description">
+                    <p>You can deposit to this address: <span id="depositBtcAddy" style="color:#2ECC40;font-weight:bold;font-size:18px;">null</span><br>Your balance will be automatically updated once your deposit is confirmed.</p>
+                    <p><div class="ui green basic inverted button" id="moneypotDepositButton">Or, deposit from moneypot</div></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="ui basic modal" id="tippingForm">
+            <i class="close icon"></i>
+            <div class="header">
+                Tipping Form
+            </div>
+            <div class="image content">
+                <div class="description">
+                    <p>
+                        <div class="ui input">
+                            <input type="text" placeholder="Username" id="tipping_username_input">
+                        </div>
+                    </p>
+                    <p>
+                        <div class="ui input">
+                            <input type="number" step="1" placeholder="Amount" id="tipping_amount_input">
+                        </div>
+                    </p>
+                    <p><div class="ui green basic inverted button" id="sendTipButton">Send bits</div></p>
+                </div>
+            </div>
+        </div>
+        
+        <div id="logo"></div>
+        <!--<div id="jackpot">Jackpot: <span id="jackpot_pot">0.00</span> Bits! <a href="https://bitcointalk.org/index.php?topic=1544070.msg15520631#msg15520631" target="_blank"><i class="help icon" id="jackpot_help_button"></i></a></div>-->
+        <div class="ui inverted divider"></div>
+        <div id="game_container">
+        
+            <div style="width:320px; position: absolute; top: 320px; left: 320px;">
+                
+            </div>
+            <div id="chat">
+                <div id="chatMonitor"></div>
+                
+                <button id="connectButton" onclick="window.location.href='https://www.moneypot.com/oauth/authorize?app_id=1471&response_type=token&state=minesweepa&redirect_uri=https://fallenangel3k.github.io'">Connect</button>
+                
+                <span id="connectedUsersText">
+                    <span id="connectedUsersAmount">0</span> Users Online<br><br>
+                    <button id="depositButton">Deposit</button>
+                    <button id="withdrawButton">Withdraw</button>
+                </span>
+                <span id="connectionText">
+                    Logged in as <span id="username"></span>. <a id="logoutButton">Log out</a>
+                    <br>Balance: <span id="balance"></span> Bits <a id="balanceRefreshButton"><i class="refresh icon" id="balanceRefreshIcon"></i></a><br>
+                    <button id="faucetButton">FAUCET</button>
+                    <button id="tipButton">TIP</button>
+                    <button id="setting" onclick="showSettings();">SETTINGS</button>
+                </span>
+            </div>
+            <div id="game_left">
+                <div class="ui dimmer">
+                    <div class="content">
+                        <div class="center">
+                            <h2 class="ui inverted icon header" id="theDimmer">
+                                <i class="warning sign icon"></i>
+                                Error: Not connected!
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+                <ul id="board">
+                    <div class="ui icon buttons" id="betControllButtons">
+                        <button class="ui button" onclick="$('#bet').val(Math.floor($('#bet').val()*2)); setBet($('#bet').val());">x2</button>
+                        <button class="ui button" onclick="$('#bet').val(Math.round($('#bet').val()/2)); setBet($('#bet').val());">½</button>
+                        <button class="ui button" onclick="$('#bet').val((user_balance>=1?1:0)); setBet($('#bet').val());">MIN</button>
+                        <button class="ui button" onclick="$('#bet').val(Math.floor(user_balance)); setBet($('#bet').val());">MAX</button>
+                    </div>
+                    <div class="ui right labeled input" id="betInputArea">
+                        <div class="ui label">Bet</div>
+                        <input class="bet" id="bet" type="number" pattern="[0-9]*" value="2" onkeyup="setBet($(this).val());" onchange="setBet($(this).val());">
+                        <div class="ui basic label">Bits</div>
+                    </div>
+                    <div class="ui icon buttons" id="bombsButtons">
+                        <button class="ui button" onclick="setBombs(1);"><i class="bomb icon"></i> 1</button>
+                        <button class="ui button" onclick="setBombs(3);"><i class="bomb icon"></i> 3</button>
+                        <button class="ui button" onclick="setBombs(5);"><i class="bomb icon"></i> 5</button>
+                        <button class="ui button" onclick="setBombs(24);"><i class="bomb icon"></i> 24</button>
+                        <button class="ui button customBombsButton">Custom</button>
+                    </div>
+                    <div class="ui right labeled input" id="customBombsInputArea" style="width: 100%; margin-top: 10px;">
+                        <div class="ui label"></div>
+                        <input class="customBombs" id="customBombs" type="number" pattern="[0-9]*" value="10" onkeyup="setBombs($(this).val());" onchange="setBombs($(this).val());" style="text-align: right;">
+                        <div class="ui basic label">Bombs</div>
+                    </div>
+                    <button id="startNewGameButton">Start new game</button>
+                    <div id="macroInfo">Or<br>Press <b>Space Bar</b> key to start/end games.</div>
+                    <center><small><a class="landlubber" href="https://moneypot.com/apps/1471">Minesweeper</a></small></center>
+                </ul>
+            </div>
+            <div id="game_log">
+                <div id="game_actions">
+                    <div class="ui statistics">
+                        <div class="statistic">
+                            <div class="label">Next</div>
+                            <div class="value" id="next_value">0</div>
+                        </div>
+                        <div class="statistic">
+                            <div class="label">Stake</div>
+                            <div class="value" id="stake_value">0</div>
+                        </div>
+                        <div class="statistic">
+                            <button id="cashoutButton">Cashout</button>
+                        </div>
+                    </div>
+                </div>
+                <div id="logs"></div>
+            </div>
+
+
+        </div>
+
+        <div id="highRoller_log">
+            <div class="title"><center>HIGHROLLERS</center></div>
+            <div id="highRoller_logs"></div>
+        </div>
+
+        <div id="game_allbets_log">
+        
+                 <!--   <table class="ui unstackable table">
+                <thead>
+                    <tr class="landlubber">
+                        <th colspan="3">Me Booty<small> | <a class="viewAllBetsButton">Landlubbers</a></small></th>
+                    </tr>
+                </thead>
+                <tbody id="game_mybets_logs">
+                </tbody>
+            </table> -->
+           <!-- <table class="ui unstackable table">
+                <thead>
+                    <tr class="landlubber">
+                        <th colspan="3">Landlubbers<small> | <a class="viewMyBetsButton">Me Own Bets</a><!-- <a class="viewJackpotWinnersButton">Jackpot winners</a>--></small></th>
+                    <!-- </tr></thead> -->
+				<div class="ui top attached tabular menu">
+				  <div class="active item">Landlubbers</div><span style="margin:1px;"></span>
+				  <button class="ui inverted button viewMyBetsButton"><a style="color: #ffcc10">Me Own Bets</a></button>
+				</div>
+				<div class="ui bottom attached active tab segment">
+					<table class="ui unstackable table">
+						<tbody id="game_allbets_logs">
+				                </tbody>
+				        </table>
+				</div>
+        </div>
+
+        <div id="game_mybets_log">
+            <div class="ui top attached tabular menu">
+				  <div class="active item">My Bets</div><span style="margin:1px;"></span>
+				  <button class="ui inverted button viewAllBetsButton"><a style="color: #ffcc10">Landlubbers</a></button>
+				</div>
+				<div class="ui bottom attached active tab segment">
+					<table class="ui unstackable table">
+						<tbody id="game_mybets_logs">
+				                </tbody>
+				        </table>
+				</div>
+        </div>
+        
+        
+
+        <!--<div id="game_jackpotwinners_log">
+            <table class="ui unstackable table">
+                <thead>
+                    <tr>
+                        <th colspan="3">Jackpot Winners History<small> - <a class="viewAllBetsButton">All bets</a> - <a class="viewMyBetsButton">My bets</a></small></th>
+                    </tr>
+                </thead>
+                <tbody id="game_jackpotwinners_logs">
+                </tbody>
+            </table>
+        </div>-->
+
+        <script type="text/javascript" src="lib/js/script.min.js"></script>
+        <script src='https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit' async defer></script>
+        
+    </body>
+</html>
+
