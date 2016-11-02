@@ -93,9 +93,9 @@ config.table_width = config.side_margin*2 + (config.n * config.puck_diameter) + 
 // PRODUCTION
    config.mp_api_uri = 'https://api.moneypot.com';
    config.mp_browser_uri = 'https://www.moneypot.com';
-   config.app_id = 864;
-   config.redirect_uri = 'https://classic.plinkopot.com';
-   config.chat_uri = 'https://a-chat-server.herokuapp.com';
+   config.app_id = 1471;
+   config.redirect_uri = 'https://fallenangel3k.github.io/plinko.html';
+   config.chat_uri = '//socket.moneypot.com';
 
 ////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////
@@ -3200,7 +3200,7 @@ var PayoutEditor = React.createClass({
   },
   // Validates current state and sets errors if necessary
   _validateState: function() {
-    // House edge must be >= 0.90
+    // House edge must be >= 0.80
     var self = this;
     var _state = _.clone(this.state);
     ['green', 'yellow', 'red'].forEach(function(color) {
@@ -3215,7 +3215,7 @@ var PayoutEditor = React.createClass({
 
       if (invalidPayout) {
         _state[color].error = 'INVALID_PAYOUT';
-      } else if (edge < 0.90) {
+      } else if (edge < 0.80) {
         _state[color].error = 'EDGE_TOO_SMALL';
       } else {
         // Valid
