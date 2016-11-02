@@ -54,7 +54,7 @@ var config = {
   mp_api_uri: 'https://api.moneypot.com',
   mp_browser_uri: 'https://www.moneypot.com',
   redirect_uri: 'https://fallenangel3k.github.io',
-  recaptcha_sitekey: '6LevqigTAAAAADBZm6WL2HPEPAZT70aWGcng0Aml',
+  recaptcha_sitekey: '6LevqigTAAAAAPSTvIbdlxhf1wDud851uD4dziFQ',
   chat_uri: '//socket.moneypot.com',
   hexColors: {
     fade: {
