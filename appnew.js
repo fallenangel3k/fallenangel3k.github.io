@@ -3264,7 +3264,7 @@ var PayoutEditor = React.createClass({
   },
   _translateErrorConstant: (function() {
     var constants = {
-      'EDGE_TOO_SMALL': 'House edge must be at least 0.90%',
+      'EDGE_TOO_SMALL': 'House edge must be at least 0.80%',
       'INVALID_PAYOUT': 'At least one payout in this row is invalid'
     };
     return function(constant) {
