@@ -3358,7 +3358,7 @@ var PayoutEditor = React.createClass({
               el.li(
                 null,
                 'House edge must be at least ',
-                 el.code(null, '0.90%')
+                 el.code(null, '0.80%')
               ),
               el.li(
                 null,
