@@ -1,0 +1,145 @@
+
+body {
+    padding-bottom: 200px;
+}
+
+/* ChatBox */
+.chat-list {
+    overflow-y: scroll;
+    height: 215px;
+    word-wrap: break-word;
+}
+.chat-list li {
+    /* Since .focus() is used to scroll to last message item,
+       turn off the outline that appears by default */
+    outline: none;
+}
+
+.no-select {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Enlarge container */
+.container {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/*
+   Navbar
+*/
+
+.navbar-brand {
+    color: #333;
+}
+.navbar-brand:hover {
+    color: #333;
+    text-decoration: underline;
+}
+
+/*
+   Bet button customizations
+*/
+
+.bet-btn {
+    font-size: 17px; /* Down from 18px for btn-lg so "Bet Yellow" fits */
+    color: white;
+}
+.bet-btn:hover {
+    color: white;
+}
+
+#blue-btn,
+#blue-btn:active,
+#blue-btn:hover {
+    /* Light #3498db */
+    /* Dark #2980b9 */
+    background-color: #2980b9;
+    background-image: linear-gradient(to bottom, #3498db 0, #2980b9 100%);
+    text-shadow: 0 1px 0 #3498db;
+}
+
+#green-btn,
+#green-btn:active,
+#green-btn:hover {
+    /* Light #2ecc71 */
+    /* Dark #27ae60 */
+    background-color: #27ae60;
+    background-image: linear-gradient(to bottom, #2ecc71 0, #27ae60 100%);
+    text-shadow: 0 1px 0 #2ecc71;
+}
+
+#yellow-btn,
+#yellow-btn:active,
+#yellow-btn:hover {
+    /* Light #f1c40f */
+    /* Dark #f39c12 */
+    background-color: #f39c12;
+    background-image: linear-gradient(to bottom, #f1c40f 0, #f39c12 100%);
+    text-shadow: 0 1px 0 #f1c40f;
+}
+
+#red-btn,
+#red-btn:active,
+#red-btn:hover {
+    /* Light #e74c3c */
+    /* Dark #C0392B */
+    background-color: #c0392b;
+    background-image: linear-gradient(to bottom, #e74c3c 0, #c0392b 100%);
+    text-shadow: 0 1px 0 #e74c3c;
+}
+/* Animation */
+
+.rotate {
+    display: inline-block;
+    -webkit-animation-name: rotate;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    -moz-animation-name: rotate;
+    -moz-animation-duration: 2s;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-timing-function: linear;
+    -o-animation-name: rotate;
+    -o-animation-duration: 2s;
+    -o-animation-iteration-count: infinite;
+    -o-animation-timing-function: linear;
+    animation-name: rotate;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+@-webkit-keyframes rotate {
+    from {-webkit-transform: rotate(0deg);}
+    to {-webkit-transform: rotate(360deg);}
+}
+
+@-moz-keyframes rotate {
+    from {-moz-transform: rotate(0deg);}
+    to {-moz-transform: rotate(360deg);}
+}
+
+@-o-keyframes rotate {
+    from {-moz-transform: rotate(0deg);}
+    to {-moz-transform: rotate(360deg);}
+}
+
+@keyframes rotate {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(360deg);}
+}
+
+
+/* Responsive adjusting of canvas */
+
+/* Large tablets/netbooks, not desktops/large laptops  */
+@media (min-width: 992px) and (max-width: 1199px) {
+    .post-avatar img {
+        max-width: 115px;
+    }
+}
