@@ -19,7 +19,7 @@ var config = {
   
   // - Configure the house edge (default is 1%)
   //   Must be between 0.0 (0%) and 1.0 (100%)
-  house_edge: 0.008,
+  house_edge: 0.001,
   
   chat_buffer_size: 99,
   

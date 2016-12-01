@@ -3200,7 +3200,7 @@ var PayoutEditor = React.createClass({
   },
   // Validates current state and sets errors if necessary
   _validateState: function() {
-    // House edge must be >= 0.80
+    // House edge must be >= 0.10
     var self = this;
     var _state = _.clone(this.state);
     ['green', 'yellow', 'red'].forEach(function(color) {
@@ -3215,7 +3215,7 @@ var PayoutEditor = React.createClass({
 
       if (invalidPayout) {
         _state[color].error = 'INVALID_PAYOUT';
-      } else if (edge < 0.80) {
+      } else if (edge < 0.10) {
         _state[color].error = 'EDGE_TOO_SMALL';
       } else {
         // Valid
@@ -3264,7 +3264,7 @@ var PayoutEditor = React.createClass({
   },
   _translateErrorConstant: (function() {
     var constants = {
-      'EDGE_TOO_SMALL': 'House edge must be at least 0.80%',
+      'EDGE_TOO_SMALL': 'House edge must be at least 0.10%',
       'INVALID_PAYOUT': 'At least one payout in this row is invalid'
     };
     return function(constant) {
@@ -3358,7 +3358,7 @@ var PayoutEditor = React.createClass({
               el.li(
                 null,
                 'House edge must be at least ',
-                 el.code(null, '0.80%')
+                 el.code(null, '0.10%')
               ),
               el.li(
                 null,
